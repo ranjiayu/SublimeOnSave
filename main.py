@@ -2,7 +2,7 @@
 
 import re, fnmatch
 import sublime, sublime_plugin
-from os import path
+from os import path, name
 from . import st_tools
 from .program import on_save
 
@@ -19,7 +19,10 @@ class OnSaveCommand(sublime_plugin.EventListener):
         #             return
 
     def on_post_save(self, view):
+
         file = view.file_name()
+        if name == 'nt':
+            file = file.replace('\\', '/')
         if path.basename(file) == on_save.CONFIG_NAME:
             on_save.clear()
         else:
@@ -61,7 +64,6 @@ class NewOnSaveConfigCommand(sublime_plugin.WindowCommand):
 class OnSaveBuildCommand(sublime_plugin.WindowCommand):
    
     def run(self, paths):
-        
         file = ""
         if len(paths):
             file = paths[0]

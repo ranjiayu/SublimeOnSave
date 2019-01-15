@@ -1,5 +1,9 @@
 # OnSave plugin for Sublime Text 3
 
+**FORK from [SublimeOnSave](https://github.com/wl879/SublimeOnSave)**
+
+增加对windows下路径中\r \n \a \b 等字符的处理
+
 Executes commands on file save. 
 
 ## Installation
